@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tracking Naaach!</title>
+		<meta charset="UTF-8">
+		<!-- Latest compiled and minified CSS Booststap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Custom css-->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<div class="container-fluid header">	<!--Header-->
+			<div class="row">
+				<div class="form-container col-md-6 col-md-offset-3 text-center">
+					<form name="trackInfo">	<!--formulario -->
+						<div class="form-group col-md-4">
+							<input type="text" name="item-Desciption" placeholder="Descripción" id="itemDesc" class="form-control">
+						</div>
+						<div class="form-group col-md-4">
+							<input type="text" name="tracking-Number" placeholder="Nº tracking" id="trackingNumber" class="form-control">
+						</div>
+						<div class="form-group col-md-4">	<!-- listaa de tienda -->
+						  <select class="form-control" id="shopList">
+						    <option >Selecciona Tienda</option>
+						    <option >Aliexpress</option>
+						    <option >Ebay</option>
+						    <option >Banggod</option>
+						  </select>
+						</div>	<!-- listaa de tienda -->
+						<div class="form-group">
+							<input type="button" name="botonAgregar" id="botonAgregar" class="btn btn-primary" value="Agregar"></input>
+						</div>
+					</form>	<!--/formulario -->
+				</div>
+			</div>
+		</div>	<!--/Header-->
+
+		<hr class="sep_header">
+
+		<div class="container items">	<!--Items table container-->
+			<div class="row">
+				<div class="col-md-12 text-center" id="masterTableContainer">
+					<table id="masterTable" class="table table-bordered table-hover" >
+						<thead>
+							<tr class="table_titles">
+								<th>Descripción</th>
+								<th>Nº tracking</th>
+								<th colspan="2">Tienda</th>
+							</tr>
+						</thead>
+						<tbody id="masterTableItems">
+							<tr class="item hidden_element">
+								<td class="tdDesc hidden_element"></td>
+								<td class="tdNum hidden_element"></td>
+								<td class="tdShop hidden_element"></td>
+								<td class="removeItem hidden_element"><a href="#" class="removeItemButton">X</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>	<!--/Items table container-->
+		</div>
+	</body>
+
+	<footer>
+		<!--JQuery-->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<!-- Latest compiled and minified JavaScript Booststap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!--Enginne.js-->
+		<script type="text/javascript" src="js/engine.js"></script>
+	</footer>
+</html>

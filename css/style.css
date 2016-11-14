@@ -1,0 +1,13 @@
+/*____Custom stile____*/
+body{
+	background-color: #F0EEEE;
+}
+div.header{
+	margin-top:32px;
+}
+.sep_header{
+	border-top: 1px solid #a0a0a0;
+}
+.hidden_element{
+	display: none;
+}
