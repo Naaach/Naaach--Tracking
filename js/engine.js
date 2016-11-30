@@ -1,5 +1,9 @@
 /*****  Naaach!  *****/
+/*
+--Cambios pendientes--
+(//validador de datos) --> change to elseif
 
+*/
 (function(){
 
 	//Variables
