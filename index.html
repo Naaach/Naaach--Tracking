@@ -30,6 +30,7 @@
 						</div>	<!-- listaa de tienda -->
 						<div class="form-group">
 							<input type="button" name="botonAgregar" id="botonAgregar" class="btn btn-primary" value="Agregar"></input>
+							<input type="button" name="botonBorrarDB" id="botonBorrarDB" class="btn btn-primary" value="Borrar"></input>
 						</div>
 					</form>	<!--/formulario -->
 				</div>
@@ -50,11 +51,17 @@
 							</tr>
 						</thead>
 						<tbody id="masterTableItems">
+							<tr class="item ">
+								<td class="tdDesc ">Wololo</td>
+								<td class="tdNum ">Wololo</td>
+								<td class="tdShop ">Wololo</td>
+								<td class="removeItem "><a href="#" class="removeItemButton">x</a></td>
+							</tr>
 							<tr class="item hidden_element">
 								<td class="tdDesc hidden_element"></td>
 								<td class="tdNum hidden_element"></td>
 								<td class="tdShop hidden_element"></td>
-								<td class="removeItem hidden_element"><a href="#" class="removeItemButton">X</a></td>
+								<td class="removeItem hidden_element"><a href="#" class="removeItemButton">x</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -70,5 +77,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!--Enginne.js-->
 		<script type="text/javascript" src="js/engine.js"></script>
+		<!--animations.js-->
+		<!-- <script type="text/javascript" src="js/animations.js"></script> -->
 	</footer>
 </html>

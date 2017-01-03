@@ -11,3 +11,13 @@ div.header{
 .hidden_element{
 	display: none;
 }
+/*____Remove item button____*/
+a.removeItemButton{
+   padding: .5px 5px;
+}
+a.removeItemButton:hover{
+	text-decoration: none;
+	color: white;
+	background-color: grey;
+	border-radius: 50%;
+}

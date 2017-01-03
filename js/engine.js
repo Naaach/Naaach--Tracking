@@ -1,17 +1,15 @@
 /*****  Naaach!  *****/
-/*
---Cambios pendientes--
-(//validador de datos) --> change to elseif
 
-*/
 (function(){
 
 	//Variables
 	//formulario
-	var formDescripcion = document.getElementById("itemDesc"),
-		formTracking = document.getElementById("trackingNumber"),
-		formShop = document.getElementById("shopList"),
-		formButton = document.getElementById("botonAgregar");
+	formDescripcion = document.getElementById("itemDesc"),
+	formTracking = document.getElementById("trackingNumber"),
+	formShop = document.getElementById("shopList"),
+	formButton = document.getElementById("botonAgregar");
+	formButtonDel = document.getElementById("botonBorrarDB");
+	
 		
 
 	//Tabla de items
@@ -20,10 +18,12 @@
 
 	//Funciones
 	newElement = function(){
-		var descripcion = formDescripcion.value,
-			trackingNumber = formTracking.value,
-			shop = formShop.value;
-		var x=document.createTextNode("X");
+		descripcion = formDescripcion.value,
+		trackingNumber = formTracking.value,
+		shop = formShop.value;
+
+		x=document.createTextNode("x");
+		validadorDatos = true;
 
 		//validador de datos
 		if ((descripcion === "") || (trackingNumber === "") || ((shop === "Selecciona Tienda") || (shop === ""))) {
@@ -31,9 +31,10 @@
 			if (trackingNumber==="") {validadorDatos=false;formTracking.classList.add("alert-danger");formTracking.placeholder="Falta Nº Tracking";}else{trackingNumberInfo="";}
 			if ((shop === "Selecciona Tienda") || (shop === "")) {validadorDatos=false;formShop.classList.add("alert-danger");}else{shopInfo="";}
 			//validadorDatos
-			if (validadorDatos === false) {return validadorDatos;}
+			if (validadorDatos === false) {return validadorDatos;}else{validadorDatos = true;}
 		}
-		if (validadorDatos = true) {
+
+		if (validadorDatos) {
 			formDescripcion.classList.remove("alert-danger");
 			formTracking.classList.remove("alert-danger");
 			formShop.classList.remove("alert-danger");
@@ -86,6 +87,7 @@
 		//masterTableItems
 		masterTableItems.appendChild(item);
 		
+		
 
 		//limpiar inputs de formulario
 		formDescripcion.value = "";
@@ -112,5 +114,60 @@
 		removeButtons[i].addEventListener("click", removerItems);	//eliminar elemento
 	}
 
+	/**** indexedDB  ****/
+	
 
+	//only database and self-functions¡
+	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+	//create or open a DB
+	var open = indexedDB.open("DataBase");
+
+
+	//Schema
+	open.onsuccess = function(){
+		db = open.result;
+
+	};
+
+	open.onupgradeneeded = function (){
+		//Transactions
+		 db = open.result;
+		 store = db.createObjectStore("Codigos", {keyPath: "tracking"});
+		 tx = db.transaction("Codigos", "readwrite");
+		 store = tx.objectStore("Codigos");
+
+	 	//Close transaction
+		tx.oncomplete = function() {
+        	db.close();
+        };
+	};
+
+	//agregar objeto
+	newObject = function(){
+		db = open.result;
+		tx = db.transaction("Codigos", "readwrite");
+		store = tx.objectStore("Codigos");
+
+		//add data
+		store.add({tracking: trackingNumber, descripcion: descripcion, tienda: shop});
+
+
+    };
+	
+
+	//Triggers
+	formButton.addEventListener("click", newObject);
+
+	//clean DB
+	cleanObjectStorage = function(){
+		tx = db.transaction("Codigos", "readwrite");
+		objectStore = tx.objectStore("Codigos");
+		
+		objectStore.clear();
+
+
+	};
+
+	formButtonDel.addEventListener("click", cleanObjectStorage);
+	/**** /indexedDB  ****/
 }());
