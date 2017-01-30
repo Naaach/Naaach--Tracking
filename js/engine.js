@@ -4,19 +4,59 @@
 
 	//Variables
 	//formulario
-	formDescripcion = document.getElementById("itemDesc"),
-	formTracking = document.getElementById("trackingNumber"),
-	formShop = document.getElementById("shopList"),
+	formDescripcion = document.getElementById("itemDesc");
+	formTracking = document.getElementById("trackingNumber");
+	formShop = document.getElementById("shopList");
 	formButton = document.getElementById("botonAgregar");
 	formButtonDel = document.getElementById("botonBorrarDB");
-	
-		
+
+
 
 	//Tabla de items
 	var masterTableItems = document.getElementById("masterTableItems"); /*<tbody>*/
 		removeButtons = document.getElementsByClassName("removeItemButton");
 
 	//Funciones
+/*
+	validadorCampos = function(){
+		formDescripcion = document.getElementById("itemDesc");
+		formTracking = document.getElementById("trackingNumber");
+		formShop = document.getElementById("shopList");
+
+		descripcion = formDescripcion.value,
+		trackingNumber = formTracking.value,
+		shop = formShop.value;
+		var valido = true;
+
+		if(descripcion===" "){
+			valido = false;
+			formDescripcion.classList.add("alert-danger");
+			formDescripcion.placeholder = "Falta Descripcion";
+		}
+		if(trackingNumber===" "){
+			valido = false;
+			trackingNumber.classList.add("alert-danger");
+			trackingNumber.placeholder = "Falta Nº Tracking";
+		}
+		if((shop === "Selecciona Tienda") || (shop === " ")){
+			valido = false;
+			shop.classList.add("alert-danger");
+		}
+
+		if (valido){
+			//limpieza de clases en campos
+			formDescripcion.classList.remove("alert-danger");
+			formTracking.classList.remove("alert-danger");
+			formShop.classList.remove("alert-danger");
+
+			//Nuvos placeholders
+			formDescripcion.placeholder=" Descripcion";
+			formTracking.placeholder="Nº Tracking";
+
+			newElement();	//llamada a la creacion de un nuevo elemento
+		}
+	};
+*/
 	newElement = function(){
 		descripcion = formDescripcion.value,
 		trackingNumber = formTracking.value,
@@ -42,7 +82,7 @@
 			formDescripcion.placeholder=" Descripcion";
 			formTracking.placeholder="Nº Tracking";
 		}
-		
+
 		//crear elementos de nueva fila
 		item = document.createElement("tr");
 		item.setAttribute("class", "item");
@@ -86,8 +126,8 @@
 		item.appendChild(tdRMClone);
 		//masterTableItems
 		masterTableItems.appendChild(item);
-		
-		
+
+
 
 		//limpiar inputs de formulario
 		formDescripcion.value = "";
@@ -95,7 +135,7 @@
  		formShop.value = "Selecciona Tienda";
 
  		//Evento de borrado
-		formButton.addEventListener("click", newElement);	//nuevo Elemento
+		formButton.addEventListener("click", validadorCampos);	//nuevo Elemento
 
 		for (var i = 0; i < removeButtons.length; i++) {
 			removeButtons[i].addEventListener("click", removerItems);	//eliminar elemento
@@ -115,12 +155,12 @@
 	}
 
 	/**** indexedDB  ****/
-	
+
 
 	//only database and self-functions¡
 	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 	//create or open a DB
-	var open = indexedDB.open("DataBase");
+	 open = indexedDB.open("DataBase");
 
 
 	//Schema
@@ -146,14 +186,14 @@
 	newObject = function(){
 		db = open.result;
 		tx = db.transaction("Codigos", "readwrite");
-		store = tx.objectStore("Codigos");
+		store = //tx.objectStore("Codigos");
 
 		//add data
 		store.add({tracking: trackingNumber, descripcion: descripcion, tienda: shop});
 
 
     };
-	
+
 
 	//Triggers
 	formButton.addEventListener("click", newObject);
@@ -162,7 +202,7 @@
 	cleanObjectStorage = function(){
 		tx = db.transaction("Codigos", "readwrite");
 		objectStore = tx.objectStore("Codigos");
-		
+
 		objectStore.clear();
 
 

@@ -1,15 +1,49 @@
 
+	//Screen width correction on DOM
+	sWidth = screen.width;
+ 	document.getElementById('body').style.maxWidth = sWidth;
+
+
+
+
 $(document).ready(function(){
 	//JQuery Start
+	var $this = $('this');
 
-	/*New table element fade in (beta) 
-	Only for first-chilfren element*/
-	var $newTableElement = $("#masterTableItems").children("tr");
- 	
-	//cambiar la opcacidad a 0 a la creacion del elemento (item)
-	$newTableElement.click(function(){
-		alert("clikc en tr");
+
+/*
+	var $containerForm = $('#center-container-form');
+	$containerForm.hide();
+
+	var $buttomForm = $('#open-add');
+	$buttomForm.click(function(){
+		$containerForm.toggle();
 	});
 
-	//Enda of JQuery
+*/
+	//hidden and toogle pop-up form
+	var $popUpForm = $('#pop-up-form-grandfather');
+	$popUpForm.hide();
+
+	var $overlayPopUp = $('.overlay-form');
+	$overlayPopUp.hide();
+
+	var $buttomForm = $('#open-add');
+	var $botonAgregar = $('#botonAgregar');
+
+	$buttomForm.click(function(){
+		$overlayPopUp.toggle();
+		$popUpForm.toggle();
+	});
+
+	($overlayPopUp || $botonAgregar).click(function(){
+		$popUpForm.toggle();
+		$overlayPopUp.toggle();
+	});
+
+
+
+
+
+	//End of JQuery
 });
