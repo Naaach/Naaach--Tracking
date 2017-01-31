@@ -3,6 +3,9 @@ html{
 	margin: 0px;
 	padding: 0px;
 }
+button{
+	outline:none;
+}
 /*____Custom stile____*/
 body{
 	background-color: #F0EEEE;
@@ -24,7 +27,7 @@ a.removeItemButton{
 a.removeItemButton:hover{
 	text-decoration: none;
 	color: white;
-	background-color: grey;
+	background-color: grey; 
 	border-radius: 50%;
 }
 
@@ -44,8 +47,8 @@ a.removeItemButton:hover{
 	height: auto;
   top: 50%;
   	left: 50%;
-  	/* bring your own prefixes */
-  	transform: translate(-50%, -80%);
+	/* bring your own prefixes */
+	transform: translate(-50%, -80%);
 	padding: : 12px 0px;
 }
 #pop-up-form{
@@ -65,15 +68,24 @@ h3.pop-up-title{
 	margin:5px;
 	margin-top: 12px;
 }
+.close-pop-up{
+	padding-right: 1%;
+  padding-top: .3%;
+  font-size: 16px;
+  color: grey;
+}
+.close-pop-up:hover{
+	color: black;
+}
 /*____Footer____*/
 #open-add{
 	padding: 8px 14px;
 	border-radius: 50%;
-	background-color: blue;
+	background-color: #3d8be8;
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-    border-style: none;	
+  border-style: none;	
 }
 #open-add i{
 	color: white;

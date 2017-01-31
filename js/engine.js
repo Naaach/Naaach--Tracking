@@ -1,8 +1,10 @@
 /*****  Naaach!  *****/
 
-(function(){
+//(function(){
 
 	//Variables
+//	validadorDatos = true;
+
 	//formulario
 	formDescripcion = document.getElementById("itemDesc");
 	formTracking = document.getElementById("trackingNumber");
@@ -17,7 +19,7 @@
 		removeButtons = document.getElementsByClassName("removeItemButton");
 
 	//Funciones
-/*
+
 	validadorCampos = function(){
 		formDescripcion = document.getElementById("itemDesc");
 		formTracking = document.getElementById("trackingNumber");
@@ -28,19 +30,29 @@
 		shop = formShop.value;
 		var valido = true;
 
-		if(descripcion===" "){
+		if(descripcion===""){
 			valido = false;
 			formDescripcion.classList.add("alert-danger");
 			formDescripcion.placeholder = "Falta Descripcion";
+		}else{
+			formDescripcion.classList.remove("alert-danger");
+			formDescripcion.placeholder=" Descripcion";
 		}
-		if(trackingNumber===" "){
+
+		if(trackingNumber===""){
 			valido = false;
-			trackingNumber.classList.add("alert-danger");
-			trackingNumber.placeholder = "Falta Nº Tracking";
+			formTracking.classList.add("alert-danger");
+			formTracking.placeholder = "Falta Nº Tracking";
+		}else{
+			formTracking.classList.remove("alert-danger");
+			formTracking.placeholder="Nº Tracking";
 		}
-		if((shop === "Selecciona Tienda") || (shop === " ")){
+
+		if((shop === "Selecciona Tienda") || (shop === "")){
 			valido = false;
-			shop.classList.add("alert-danger");
+			formShop.classList.add("alert-danger");
+		}else{
+			formShop.classList.remove("alert-danger");
 		}
 
 		if (valido){
@@ -56,32 +68,14 @@
 			newElement();	//llamada a la creacion de un nuevo elemento
 		}
 	};
-*/
+
 	newElement = function(){
+
 		descripcion = formDescripcion.value,
 		trackingNumber = formTracking.value,
 		shop = formShop.value;
 
 		x=document.createTextNode("x");
-		validadorDatos = true;
-
-		//validador de datos
-		if ((descripcion === "") || (trackingNumber === "") || ((shop === "Selecciona Tienda") || (shop === ""))) {
-			if (descripcion==="") {validadorDatos=false;formDescripcion.classList.add("alert-danger");formDescripcion.placeholder="Falta Descripcion";}else{descripcionInfo="";}
-			if (trackingNumber==="") {validadorDatos=false;formTracking.classList.add("alert-danger");formTracking.placeholder="Falta Nº Tracking";}else{trackingNumberInfo="";}
-			if ((shop === "Selecciona Tienda") || (shop === "")) {validadorDatos=false;formShop.classList.add("alert-danger");}else{shopInfo="";}
-			//validadorDatos
-			if (validadorDatos === false) {return validadorDatos;}else{validadorDatos = true;}
-		}
-
-		if (validadorDatos) {
-			formDescripcion.classList.remove("alert-danger");
-			formTracking.classList.remove("alert-danger");
-			formShop.classList.remove("alert-danger");
-
-			formDescripcion.placeholder=" Descripcion";
-			formTracking.placeholder="Nº Tracking";
-		}
 
 		//crear elementos de nueva fila
 		item = document.createElement("tr");
@@ -134,14 +128,14 @@
  		formTracking.value = "";
  		formShop.value = "Selecciona Tienda";
 
- 		//Evento de borrado
-		formButton.addEventListener("click", validadorCampos);	//nuevo Elemento
-
+		//borrado selectivo
 		for (var i = 0; i < removeButtons.length; i++) {
 			removeButtons[i].addEventListener("click", removerItems);	//eliminar elemento
 		}
-
 	}
+
+	//Llamada al validador
+	formButton.addEventListener("click", validadorCampos);	//& nuevo Elemento
 
 	//Borrar elemento
 	 removerItems = function(){
@@ -149,65 +143,13 @@
 	}
 
 	//Eventos
-	formButton.addEventListener("click", newElement);	//nuevo Elemento
+//	formButton.addEventListener("click", newElement);	//nuevo Elemento
 	for (var i = 0; i < removeButtons.length; i++) {
 		removeButtons[i].addEventListener("click", removerItems);	//eliminar elemento
 	}
 
-	/**** indexedDB  ****/
+	/**
+	*DATABASE HERE!
+	**/
 
-
-	//only database and self-functions¡
-	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-	//create or open a DB
-	 open = indexedDB.open("DataBase");
-
-
-	//Schema
-	open.onsuccess = function(){
-		db = open.result;
-
-	};
-
-	open.onupgradeneeded = function (){
-		//Transactions
-		 db = open.result;
-		 store = db.createObjectStore("Codigos", {keyPath: "tracking"});
-		 tx = db.transaction("Codigos", "readwrite");
-		 store = tx.objectStore("Codigos");
-
-	 	//Close transaction
-		tx.oncomplete = function() {
-        	db.close();
-        };
-	};
-
-	//agregar objeto
-	newObject = function(){
-		db = open.result;
-		tx = db.transaction("Codigos", "readwrite");
-		store = //tx.objectStore("Codigos");
-
-		//add data
-		store.add({tracking: trackingNumber, descripcion: descripcion, tienda: shop});
-
-
-    };
-
-
-	//Triggers
-	formButton.addEventListener("click", newObject);
-
-	//clean DB
-	cleanObjectStorage = function(){
-		tx = db.transaction("Codigos", "readwrite");
-		objectStore = tx.objectStore("Codigos");
-
-		objectStore.clear();
-
-
-	};
-
-	formButtonDel.addEventListener("click", cleanObjectStorage);
-	/**** /indexedDB  ****/
-}());
+//}());

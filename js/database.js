@@ -1,24 +1,59 @@
 /*****  Naaach!  *****/
 
 //only database and seffunctions¡
+	/**** indexedDB  ****/
 
-//create or open a DB
-var open = indexedDB.open("DB", 1);
 
-//Schema
-open.onupgradeneeded = function(){
-	var db = open.result;
-	var store = db.createObjectStore("Codigos", {keyPath: "tracking"});
+	//only database and self-functions¡
+	var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+	//create or open a DB
+	 open = indexedDB.open("DataBase");
 
-};
 
-open.onsuccess = function (){
-	//Transactions
-	var db = open.result;
-	var tx = db.transaction("Codigos", "readwrite");
-	var store = tx.objectStore("Codigos");
+	//Schema
+	open.onsuccess = function(){
+		db = open.result;
 
-	//add some data 
-	store.put({tracking: trackingNumber, descipccion: descripcion, tienda: shop});
+	};
 
-};
+	open.onupgradeneeded = function (){
+		//Transactions
+		 db = open.result;
+		 store = db.createObjectStore("Codigos", {keyPath: "tracking"});
+		 tx = db.transaction("Codigos", "readwrite");
+		 store = tx.objectStore("Codigos");
+
+	 	//Close transaction
+		tx.oncomplete = function() {
+        	db.close();
+        };
+	};
+
+	//agregar objeto
+	newObject = function(){
+		db = open.result;
+		tx = db.transaction("Codigos", "readwrite");
+		store = //tx.objectStore("Codigos");
+
+		//add data
+		store.add({tracking: trackingNumber, descripcion: descripcion, tienda: shop});
+
+
+    };
+
+
+	//Triggers
+	formButton.addEventListener("click", newObject);
+
+	//clean DB
+	cleanObjectStorage = function(){
+		tx = db.transaction("Codigos", "readwrite");
+		objectStore = tx.objectStore("Codigos");
+
+		objectStore.clear();
+
+
+	};
+
+	formButtonDel.addEventListener("click", cleanObjectStorage);
+	/**** /indexedDB  ****/

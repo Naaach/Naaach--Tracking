@@ -1,0 +1,20 @@
+//		validadorDatos = true;
+
+		//validador de datos
+/*		if ((descripcion === "") || (trackingNumber === "") || ((shop === "Selecciona Tienda") || (shop === ""))) {
+			if (descripcion==="") {validadorDatos=false;formDescripcion.classList.add("alert-danger");formDescripcion.placeholder="Falta Descripcion";}else{descripcionInfo="";}
+			if (trackingNumber==="") {validadorDatos=false;formTracking.classList.add("alert-danger");formTracking.placeholder="Falta Nº Tracking";}else{trackingNumberInfo="";}
+			if ((shop === "Selecciona Tienda") || (shop === "")) {validadorDatos=false;formShop.classList.add("alert-danger");}else{shopInfo="";}
+			//validadorDatos
+			if (validadorDatos === false) {return validadorDatos;}else{validadorDatos = true;}
+		}
+
+		if (validadorDatos) {
+			formDescripcion.classList.remove("alert-danger");
+			formTracking.classList.remove("alert-danger");
+			formShop.classList.remove("alert-danger");
+
+			formDescripcion.placeholder=" Descripcion";
+			formTracking.placeholder="Nº Tracking";
+		}
+*/

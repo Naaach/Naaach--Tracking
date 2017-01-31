@@ -8,42 +8,68 @@
 
 $(document).ready(function(){
 	//JQuery Start
-	var $this = $('this');
+	var $this = $(this);
 
 
-/*
-	var $containerForm = $('#center-container-form');
-	$containerForm.hide();
 
-	var $buttomForm = $('#open-add');
-	$buttomForm.click(function(){
-		$containerForm.toggle();
-	});
-
-*/
 	//hidden and toogle pop-up form
 	var $popUpForm = $('#pop-up-form-grandfather');
 	$popUpForm.hide();
 
 	var $overlayPopUp = $('.overlay-form');
 	$overlayPopUp.hide();
-
+	
+	var $closePopUp = $('#close-pop-up > i');
 	var $buttomForm = $('#open-add');
-	var $botonAgregar = $('#botonAgregar');
 
+
+	//Open
 	$buttomForm.click(function(){
-		$overlayPopUp.toggle();
-		$popUpForm.toggle();
+
+		$overlayPopUp.fadeTo(250, 1, function(){
+			$(this).show();
+		});
+		$popUpForm.delay(250).fadeTo(500, 1, function(){
+			$(this).show();
+		});
+
 	});
 
-	($overlayPopUp || $botonAgregar).click(function(){
-		$popUpForm.toggle();
-		$overlayPopUp.toggle();
-	});
+	//close
+	$dissapear = function(){
+		$popUpForm.fadeTo(250, 0, function(){
+			$(this).hide();
+		});
+		$overlayPopUp.delay(250).fadeTo(500, 0, function(){
+			$(this).hide();
+		});
+
+	};
+
+	$overlayPopUp.click($dissapear);
+	$closePopUp.click($dissapear);
 
 
+	//#open-add animations
+	var $openAdd = $('#open-add');
 
-
+	$openAdd.hover(
+		//Mouseenter
+		function(){
+			$(this).animate({padding: "+=5.2px"}, 150);
+			$(this).children('i').animate({'font-size': "+=1px"}, 200);
+			setTimeout(function(){
+				if ($openAdd.is(':hover')) {
+					//code for options menu circle arround $openAdd
+				}
+			}, 2000);
+		},
+		//Mouseleave
+		function(){
+			$(this).animate({padding: "-=5.2px"}, 150);
+			$(this).children('i').animate({'font-size': "-=1px"}, 200);
+		}
+	);
 
 	//End of JQuery
 });

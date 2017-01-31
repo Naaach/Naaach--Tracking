@@ -13,50 +13,57 @@
 
 	<body id="body">
 
-<div class="overlay-form"></div>
-<div class="container-fluid" id="pop-up-form-grandfather"> <!-- pop-up-form-grandfather -->
-<div class="row">
-	<div class="col-md-push-3 col-md-6 text-center" id="pop-up-form">
-		<h3 class="pop-up-title">Datos de envío</h3>
-		<hr class="hr-pop-up">
-		<div class="center-container-form" id="center-container-form">	<!--contenedor formulario -->
+	<div class="overlay-form" style="display: none;"></div>
+	<div class="container-fluid" id="pop-up-form-grandfather" style="display: none;"> <!-- pop-up-form-grandfather -->
 		<div class="row">
-			<div class="form-container col-md-12 text-center">
-				<form name="trackInfo">	<!--formulario -->
+			<div class="col-md-push-3 col-md-6 text-center" id="pop-up-form">
+				<div id="pop-up-title">
 					<div class="row">
-						<div class="form-group col-md-4">
-							<input type="text" name="item-Desciption" placeholder="Descripción" id="itemDesc" class="form-control">
+						<span class="close-pop-up pull-right" id="close-pop-up"><i class="fa fa-times"></i></span>
+						<div class="col-md-6 col-md-push-3">
+							<h3 class="pop-up-title">Datos de envío</h3>
 						</div>
-						<div class="form-group col-md-4">
-							<input type="text" name="tracking-Number" placeholder="Nº tracking" id="trackingNumber" class="form-control">
-						</div>
-						<div class="form-group col-md-4">	<!-- listaa de tienda -->
-						<select class="form-control" id="shopList">
-							<option >Selecciona Tienda</option>
-							<option >Aliexpress</option>
-							<option >Ebay</option>
-							<option >Banggod</option>
-						</select>
-						</div>	<!-- /lista de tienda -->
 					</div>
-					<hr class="hr-pop-up">
-					<div class="row">
-						<div class="cold-md-12 form-group"> <!-- Form Buttons -->
-							<div class="col-md-3 col-md-push-3 text-center">
-								<input type="button" name="botonAgregar" id="botonAgregar" class="btn btn-primary" value="Agregar"></input>
+				</div>
+				<hr class="hr-pop-up">
+				<div class="center-container-form" id="center-container-form">	<!--contenedor formulario -->
+				<div class="row">
+					<div class="form-container col-md-12 text-center">
+						<form name="trackInfo">	<!--formulario -->
+							<div class="row">
+								<div class="form-group col-md-4">
+									<input type="text" name="item-Desciption" placeholder="Descripción" id="itemDesc" class="form-control">
+								</div>
+								<div class="form-group col-md-4">
+									<input type="text" name="tracking-Number" placeholder="Nº tracking" id="trackingNumber" class="form-control">
+								</div>
+								<div class="form-group col-md-4">	<!-- listaa de tienda -->
+								<select class="form-control" id="shopList">
+									<option >Selecciona Tienda</option>
+									<option >Aliexpress</option>
+									<option >Ebay</option>
+									<option >Banggod</option>
+								</select>
+								</div>	<!-- /lista de tienda -->
 							</div>
-							<div class="col-md-3 col-md-push-3 text-center">
-								<input type="button" name="botonBorrarDB" id="botonBorrarDB" class="btn btn-primary" value="Borrar"></input>
+							<hr class="hr-pop-up">
+							<div class="row">
+								<div class="cold-md-12 form-group"> <!-- Form Buttons -->
+									<div class="col-md-3 col-md-push-3 text-center">
+										<input type="button" name="botonAgregar" id="botonAgregar" class="btn btn-primary" value="Agregar"></input>
+									</div>
+									<div class="col-md-3 col-md-push-3 text-center">
+										<input type="button" name="botonBorrarDB" id="botonBorrarDB" class="btn btn-primary" value="Borrar"></input>
+									</div>
+								</div> <!-- Form Buttons -->
 							</div>
-						</div> <!-- Form Buttons -->
+						</form>	<!--/formulario -->
 					</div>
-				</form>	<!--/formulario -->
+				</div>
+				</div> <!-- /contenedor formulario -->
 			</div>
 		</div>
-		</div> <!-- /contenedor formulario -->
-	</div>
-</div>
-</div> <!-- /pop-up-form-grandfather -->
+	</div> <!-- /pop-up-form-grandfather -->
 
 		<div class="container-fluid header">	<!--Header-->
 			
@@ -94,12 +101,17 @@
 
 	<footer>
 		<!--JQuery-->
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8= " crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified JavaScript Booststap -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!--Enginne.js-->
 		<script type="text/javascript" src="js/engine.js"></script>
 		<!--animations.js-->
 		<script type="text/javascript" src="js/animations.js"></script>
+		<!-- Live reload -->
+		<script>
+			document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+		</script>
+
 	</footer>
 </html>
