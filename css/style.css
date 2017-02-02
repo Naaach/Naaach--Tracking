@@ -83,11 +83,50 @@ h3.pop-up-title{
 	border-radius: 50%;
 	background-color: #3d8be8;
 	position: fixed;
-	bottom: 20px;
+	bottom: 25px;
 	right: 20px;
   border-style: none;	
 }
 #open-add i{
 	color: white;
 	font-size: 12px
+}
+/*----Tool buttons----*/
+.tool-button{
+	padding: 8px 14px;
+	border-radius: 50%;
+	position: fixed;
+  border-style: none;	
+	font-size: 12px;
+	height: 35px;
+	width: 35px;
+	color:white;
+}
+.tool-button-1{
+	bottom:80px;
+	right:30px;;
+	background-color: #59A12D;
+}
+.tool-button-1 > i{
+	margin-left: -1px;
+	padding-top: 1px;
+}
+
+.tool-button-2{
+	bottom:56px;
+	right:71px;;
+	background-color: #B054AB;
+}
+.tool-button-2 > i{
+
+}
+
+.tool-button-3{
+	bottom:11px;
+	right:71px;;
+	background-color: #5096BA;
+}
+.tool-button-3 > i{
+  margin-left: -2px;
+ 	margin-bottom: 0px;
 }

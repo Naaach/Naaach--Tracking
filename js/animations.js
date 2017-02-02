@@ -22,6 +22,9 @@ $(document).ready(function(){
 	var $closePopUp = $('#close-pop-up > i');
 	var $buttomForm = $('#open-add');
 
+	var $tb1 = $('#tool-button-1');
+	var $tb2 = $('#tool-button-2');
+	var $tb3 = $('#tool-button-3');
 
 	//Open
 	$buttomForm.click(function(){
@@ -58,14 +61,31 @@ $(document).ready(function(){
 		function(){
 			$(this).animate({padding: "+=5.2px"}, 150);
 			$(this).children('i').animate({'font-size': "+=1px"}, 200);
-			setTimeout(function(){
-				if ($openAdd.is(':hover')) {
-					//code for options menu circle arround $openAdd
-				}
-			}, 2000);
+			
+			$tb1.delay(400).fadeTo(500, 1, function(){
+				$(this).show();
+			});
+			$tb2.delay(600).fadeTo(500, 1, function(){
+				$(this).show();
+			});
+			$tb3.delay(800).fadeTo(500, 1, function(){
+				$(this).show();
+			});
+
 		},
 		//Mouseleave
 		function(){
+
+			$tb1.delay(800).fadeTo(500, 0, function(){
+				$(this).hide();
+			});
+			$tb2.delay(600).fadeTo(500, 0, function(){
+				$(this).hide();
+			});
+			$tb3.delay(400).fadeTo(500, 0, function(){
+				$(this).hide();
+			});
+
 			$(this).animate({padding: "-=5.2px"}, 150);
 			$(this).children('i').animate({'font-size': "-=1px"}, 200);
 		}
